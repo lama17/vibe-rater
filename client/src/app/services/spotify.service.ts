@@ -39,17 +39,27 @@ export class SpotifyService {
     return this.sendRequestToExpress(`/search/${category}/${encodeURIComponent(resource)}`).then(data => {
       //console.log(data);
       if (category == 'artist') {
-        return Promise.all((data.artists.items.map(item => new ArtistData(item))));
+        let results = data['artists']['items'].map(artist => {
+          return new ArtistData(artist);
+        });
+        return results;
       }
 
       if (category == 'album') {
-        return Promise.all((data.albums.items.map(item => new AlbumData(item))));
-      }
+        let results = data['albums']['items'].map(album => {
+          return new AlbumData(album);
+        });
+        return results;
 
-      if (category == 'track') {
-        return Promise.all((data.tracks.items.map(item => new TrackData(item))));
       }
-      
+      if (category == 'track') {
+        let results = data['tracks']['items'].map(track => {
+          return new TrackData(track);
+        });
+        return results;
+      }else{
+        return null;
+      }
     });
 
   }
@@ -64,37 +74,56 @@ export class SpotifyService {
 
   getRelatedArtists(artistId:string):Promise<ArtistData[]> {
     //TODO: use the related artist endpoint to make a request to express and return an array of artist data.
-   return this.sendRequestToExpress(`/artist-related-artists/${encodeURIComponent(artistId)}`).then(data => {
-     return Promise.all((data.artists.map(item => new ArtistData(item))));
-   });
+    return this.sendRequestToExpress('/artist-related-artists/' + encodeURIComponent(artistId)).then(response => {
+      let artistData:ArtistData[];
+      artistData = response['artists'].map(artist => {
+        return new ArtistData(artist);
+      });
+      console.log(artistData.length);
+      return artistData;
+    });
   }
 
   getTopTracksForArtist(artistId:string):Promise<TrackData[]> {
     //TODO: use the top tracks endpoint to make a request to express.
-    return this.sendRequestToExpress(`/artist-top-tracks/${encodeURIComponent(artistId)}`).then(data => {
-      return Promise.all((data.tracks.map(item => new TrackData(item))));
+    return this.sendRequestToExpress('/artist-top-tracks/' + encodeURIComponent(artistId)).then(response => {
+      let trackData:TrackData[];
+      trackData = response['tracks'].map(track => {
+        return new TrackData(track);
+      });
+      console.log(trackData.length);
+      return trackData;
     });
   }
 
   getAlbumsForArtist(artistId:string):Promise<AlbumData[]> {
     //TODO: use the albums for an artist endpoint to make a request to express.
-    return this.sendRequestToExpress(`/artist-albums/${encodeURIComponent(artistId)}`).then(data => {
-      console.log(data)
-      return Promise.all((data.items.map(item => new AlbumData(item))));
+    return this.sendRequestToExpress('/artist-albums/' + encodeURIComponent(artistId)).then(response => {
+      let albumData:AlbumData[];
+      albumData = response['items'].map(album => {
+        return new AlbumData(album);
+      });
+      console.log(AlbumData.length);
+      return albumData;
     });
   }
 
   getAlbum(albumId:string):Promise<AlbumData> {
     //TODO: use the album endpoint to make a request to express.
-    return this.sendRequestToExpress(`/album/${encodeURIComponent(albumId)}`).then(data => {
-      return new AlbumData(data);
+    return this.sendRequestToExpress('/album/' + encodeURIComponent(albumId)).then(response => {
+      let albumdata = new AlbumData(response);
+      return albumdata;
     });
   }
 
   getTracksForAlbum(albumId:string):Promise<TrackData[]> {
     //TODO: use the tracks for album endpoint to make a request to express.
-    return this.sendRequestToExpress(`/album-tracks/${encodeURIComponent(albumId)}`).then(data => {
-      return Promise.all((data.items.map(item => new TrackData(item))));
+    return this.sendRequestToExpress('/album-tracks/' + encodeURIComponent(albumId)).then(response => {
+      let trackData:TrackData[];
+      trackData = response['items'].map(track => {
+        return new TrackData(track);
+      });
+      return trackData;
     });
   }
 
