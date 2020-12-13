@@ -133,7 +133,7 @@ router.get('/callback', function(req, res, next) {
 			access_token = json.access_token;
 			refresh_token = json.refresh_token;
 			fs.writeFile('tokens.json', JSON.stringify({access_token: access_token, refresh_token: refresh_token}), () => {
-				res.redirect(client_uri);
+				res.redirect(client_uri + '/home');
 			});
 		}).catch(err => console.error(err));
 	}

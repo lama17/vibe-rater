@@ -4,12 +4,20 @@ import { ArtistPageComponent } from './pages/artist-page/artist-page.component';
 import { TrackPageComponent } from './pages/track-page/track-page.component';
 import { AlbumPageComponent } from './pages/album-page/album-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { SignInPageComponent } from './pages/sign-in-page/sign-in-page.component';
+import { CompareComponent } from './pages/compare/compare.component';
+import { BuildPlaylistComponent } from './pages/build-playlist/build-playlist.component';
+import { RatePlaylistComponent } from './pages/rate-playlist/rate-playlist.component';
 
 const routes: Routes = [
 	{ path: 'artist/:id', component: ArtistPageComponent},
 	{ path: 'track/:id', component: TrackPageComponent},
 	{ path: 'album/:id', component: AlbumPageComponent},
-	{ path: '', component: HomePageComponent}
+	{ path: 'home', component: HomePageComponent},
+	{ path: 'compare', component: CompareComponent},
+	{ path: 'build-playlist', component: BuildPlaylistComponent},
+	{ path: 'rate-playlist', component: RatePlaylistComponent},
+	{ path: '', component: SignInPageComponent}
 ];
 
 @NgModule({
