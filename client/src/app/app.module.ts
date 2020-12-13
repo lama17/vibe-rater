@@ -15,6 +15,11 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { SearchComponent } from './components/search/search.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { ThermometerComponent } from './components/thermometer/thermometer.component';
+import { SignInPageComponent } from './pages/sign-in-page/sign-in-page.component';
+import { CompareComponent } from './pages/compare/compare.component';
+import { RatePlaylistComponent } from './pages/rate-playlist/rate-playlist.component';
+import { BuildPlaylistComponent } from './pages/build-playlist/build-playlist.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,12 @@ import { ThermometerComponent } from './components/thermometer/thermometer.compo
     CarouselComponent,
     SearchComponent,
     HomePageComponent,
-    ThermometerComponent
+    ThermometerComponent,
+    SignInPageComponent,
+    CompareComponent,
+    RatePlaylistComponent,
+    BuildPlaylistComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
