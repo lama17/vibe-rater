@@ -6,6 +6,8 @@ import { TrackData } from '../data/track-data';
 import { ResourceData } from '../data/resource-data';
 import { ProfileData } from '../data/profile-data';
 import { TrackFeature } from '../data/track-feature';
+import { PlaylistData } from '../data/playlist-data';
+import { ɵConsole } from '@angular/core/src/core';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +18,6 @@ export class SpotifyService {
   constructor(private http:HttpClient) { }
 
   private sendRequestToExpress(endpoint:string):Promise<any> {
-    //TODO: use the injected http Service to make a get request to the Express endpoint and return the response.
-    //the http service works similarly to fetch(). It may be useful to call .toPromise() on any responses.
-    //update the return to instead return a Promise with the data from the Express server
-    //console.log(this.expressBaseUrl+endpoint);
     var promise = this.http.get(this.expressBaseUrl+endpoint, {responseType: 'json'}).toPromise();
     return Promise.resolve(promise);
   }
@@ -28,6 +26,39 @@ export class SpotifyService {
     //This line is sending a request to express, which returns a promise with some data. We're then parsing the data 
     return this.sendRequestToExpress('/me').then((data) => {
       return new ProfileData(data);
+    });
+  }
+
+  getMyPlaylists():Promise<PlaylistData[]> {
+    // Returns all of a user's playlists.
+    return this.sendRequestToExpress('/me/playlists').then(data => {
+      let playlistData:PlaylistData[];
+      playlistData = data['items'].map(playlist => {
+        return new PlaylistData(playlist);
+    });
+    return playlistData;
+  });
+}
+
+  getMyLibrary():Promise<TrackData[]> {
+    // Returns a user's song library to an array of track objects
+    return this.sendRequestToExpress('/me/tracks').then(data => {
+      let trackData:TrackData[];
+      trackData = data['items'].map(item => {
+        return new TrackData(item['track']);
+      });
+      return trackData;
+    });
+  }
+
+  getTracksFromPlaylist(playlistId:string):Promise<TrackData[]> {
+    // returns tracks for a specific playlist
+    return this.sendRequestToExpress('/playlists/' + encodeURIComponent(playlistId) + '/tracks').then(response => {
+      let trackData:TrackData[];
+      trackData = response['items'].map(item => {
+        return new TrackData(item['track']);
+      });
+      return trackData;
     });
   }
 

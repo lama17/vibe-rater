@@ -96,7 +96,7 @@ router.get('*', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
-	var scopes = 'user-read-private user-read-email';
+	var scopes = 'user-read-private user-read-email user-library-read playlist-read-private';
 	res.redirect('https://accounts.spotify.com/authorize' +
 	  '?response_type=code' +
 	  '&client_id=' + my_client_id +
@@ -141,6 +141,19 @@ router.get('/callback', function(req, res, next) {
 
 router.get('/me', function(req, res, next) {
 	makeAPIRequest('https://api.spotify.com/v1/me', res);
+});
+
+router.get('/me/playlists', function(req, res, next) {
+	makeAPIRequest('https://api.spotify.com/v1/me/playlists', res);
+});
+
+router.get('/playlists/:id/tracks', function(req, res, next) {
+	var id = req.params.id;
+	makeAPIRequest('https://api.spotify.com/v1/playlists/' + id + '/tracks', res);
+});
+
+router.get('/me/tracks', function(req, res, next) {
+	makeAPIRequest('https://api.spotify.com/v1/me/tracks?limit=50', res);
 });
 
 router.get('/search/:category/:resource', function(req, res, next) {
