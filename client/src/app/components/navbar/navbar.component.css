@@ -1,0 +1,24 @@
+nav {
+    padding: 20px;
+}
+li {
+    list-style-type: none;
+}
+.nav-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-logo {
+    display: flex;
+    flex-direction: column;
+}
+.sub-menu {
+    display: flex;
+    flex-direction: row;
+}
+
+.user-icon {
+    border-radius: 50%;
+}
