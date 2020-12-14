@@ -8,12 +8,16 @@ import { SignInPageComponent } from './pages/sign-in-page/sign-in-page.component
 import { CompareComponent } from './pages/compare/compare.component';
 import { BuildPlaylistComponent } from './pages/build-playlist/build-playlist.component';
 import { RatePlaylistComponent } from './pages/rate-playlist/rate-playlist.component';
+import { SearchComponent } from './components/search/search.component';
+import { AboutComponent } from './components/about/about.component';
 
 const routes: Routes = [
 	{ path: 'artist/:id', component: ArtistPageComponent},
 	{ path: 'track/:id', component: TrackPageComponent},
 	{ path: 'album/:id', component: AlbumPageComponent},
 	{ path: 'home', component: HomePageComponent},
+	{ path: 'search', component: SearchComponent},
+	{ path: 'about', component: AboutComponent},
 	{ path: 'compare', component: CompareComponent},
 	{ path: 'build-playlist', component: BuildPlaylistComponent},
 	{ path: 'rate-playlist', component: RatePlaylistComponent},

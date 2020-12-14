@@ -1,1 +1,30 @@
-# vibe-rater
+--Readme document for 
+Names: Andrea Lam, Ovya Barani, Rava Rahbari
+Emails: lama17@uci.edu
+IDs: 18774398
+--
+
+1. Which requirements were fulfilled?
+
+*/
+- */1 Connect application to Spotify server
+- */1 Gather and load user data
+- */1 Generate algorithms for each mood
+- */1 Rate the user’s playlist by mood percentage
+- */1 Build playlists based on moods
+- */1 Compare two playlists’ compatibility
+- */1 Design and develop the user interface 
+
+
+2. How long, in hours, did it take you to complete this assignment?
+
+
+3. What online resources did you consult when completing this assignment? (list specific URLs)
+https://mdbootstrap.com/docs/angular/navigation/navbar/
+
+4. What classmates or other individuals did you consult as part of this assignment? What did you discuss?
+
+
+
+5. Is there anything special we need to know in order to run your code?
+
