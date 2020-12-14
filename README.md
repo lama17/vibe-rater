@@ -1,8 +1,7 @@
---Readme document for 
+--Readme for Vibe-Rater (INF133 Final Project)--
 Names: Andrea Lam, Ovya Barani, Rava Rahbari
-Emails: lama17@uci.edu
-IDs: 18774398
---
+Emails: lama17@uci.edu, obarani@uci.edu
+IDs: 18774398, 70919612
 
 1. Which requirements were fulfilled?
 
@@ -21,6 +20,7 @@ IDs: 18774398
 
 3. What online resources did you consult when completing this assignment? (list specific URLs)
 https://mdbootstrap.com/docs/angular/navigation/navbar/
+https://developer.spotify.com/documentation/web-api/reference/
 
 4. What classmates or other individuals did you consult as part of this assignment? What did you discuss?
 
