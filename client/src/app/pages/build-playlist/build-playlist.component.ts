@@ -14,10 +14,12 @@ export class BuildPlaylistComponent implements OnInit {
   constructor(private spotifyService:SpotifyService) { }
 
   ngOnInit() {
+
     this.spotifyService.getMyLibrary().then(data => {
       this.library = data;
+      console.log('first 50 saved songs');
+      console.log(this.library);
     });
-    console.log(this.library);
   }
 }
 

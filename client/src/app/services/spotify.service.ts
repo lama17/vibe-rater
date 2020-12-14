@@ -7,6 +7,7 @@ import { ResourceData } from '../data/resource-data';
 import { ProfileData } from '../data/profile-data';
 import { TrackFeature } from '../data/track-feature';
 import { PlaylistData } from '../data/playlist-data';
+import { ɵConsole } from '@angular/core/src/core';
 
 @Injectable({
   providedIn: 'root'
@@ -40,22 +41,22 @@ export class SpotifyService {
 }
 
   getMyLibrary():Promise<TrackData[]> {
-    // Returns a user's song library, in an array of Track objects
-    return this.sendRequestToExpress('/me/tracks').then(data=> {
+    // Returns a user's song library to an array of track objects
+    return this.sendRequestToExpress('/me/tracks').then(data => {
       let trackData:TrackData[];
-      trackData = data['items'].map(track => {
-        return new TrackData(track);
+      trackData = data['items'].map(item => {
+        return new TrackData(item['track']);
       });
       return trackData;
     });
   }
 
-  getPlaylistItems(playlistId:string):Promise<TrackData[]> {
+  getTracksFromPlaylist(playlistId:string):Promise<TrackData[]> {
     // returns tracks for a specific playlist
     return this.sendRequestToExpress('/playlists/' + encodeURIComponent(playlistId) + '/tracks').then(response => {
       let trackData:TrackData[];
-      trackData = response['items'].map(track => {
-        return new TrackData(track);
+      trackData = response['items'].map(item => {
+        return new TrackData(item['track']);
       });
       return trackData;
     });
