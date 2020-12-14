@@ -143,6 +143,19 @@ router.get('/me', function(req, res, next) {
 	makeAPIRequest('https://api.spotify.com/v1/me', res);
 });
 
+router.get('/me/playlists', function(req, res, next) {
+	makeAPIRequest('https://api.spotify.com/v1/me/playlists', res);
+});
+
+router.get('/playlists/:id/tracks', function(req, res, next) {
+	var id = req.params.id;
+	makeAPIRequest('https://api.spotify.com/v1/playlists' + id + '/tracks', res);
+});
+
+router.get('/me/tracks', function(req, res, next) {
+	makeAPIRequest('https://api.spotify.com/v1/me/tracks', res);
+});
+
 router.get('/search/:category/:resource', function(req, res, next) {
 	var resource = req.params.resource;
 	var category = req.params.category;

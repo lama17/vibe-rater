@@ -20,6 +20,7 @@ import { CompareComponent } from './pages/compare/compare.component';
 import { RatePlaylistComponent } from './pages/rate-playlist/rate-playlist.component';
 import { BuildPlaylistComponent } from './pages/build-playlist/build-playlist.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { PlaylistListComponent } from './components/playlist-list/playlist-list.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     RatePlaylistComponent,
     BuildPlaylistComponent,
     NavbarComponent,
+    PlaylistListComponent
   ],
   imports: [
     BrowserModule,
