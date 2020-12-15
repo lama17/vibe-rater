@@ -1,0 +1,30 @@
+<table class="table table-sm table-light table-striped">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+      <th scope="col">Playlist Name</th>
+      <th scope="col">Number of Songs</th>
+      <th scope="col"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<!--Use *ngFor to loop over playlists-->
+			<tr *ngFor="let playlist of playlists; let i=index">
+				<!--TODO: Populate with row index (start with 1!)-->
+				<td>{{i+1}}</td>
+				<td>
+					<!--link to the endpoint for that playlist, display the playlist's name-->
+					<a href="{{ playlist.url }}">{{playlist.name}}</a>
+        </td>
+        <td>
+					<!--number of songs in playlist-->
+					{{ playlist['tracks']['total'] }}
+        </td>
+        <td>
+          <button (click)="selectPlaylist(playlist)" class="btn btn-light">Choose this playlist</button>
+        </td>
+			</tr>
+  </tbody>
+</table>
+
+<p *ngIf='showResults'>Showing rating for: {{ selectedPlaylist.name }}. Results display here!</p>
