@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { SpotifyService } from 'src/app/services/spotify.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  profile_pic:string = "../../../assets/unknown.jpg";
 
-  constructor() { }
+  constructor(private spotifyService: SpotifyService) { }
 
   ngOnInit() {
+    this.spotifyService.aboutMe().then(data => {
+      this.profile_pic = data.imageURL;
+    });
   }
 
 }

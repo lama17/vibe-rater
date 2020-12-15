@@ -1,16 +1,19 @@
-<nav>
-  <ul class="nav-container">
-    <li><a href="/search">BROWSE</a></li>
-    <li><a class="nav-logo" href="/home">VIBE-RATER</a>
-      <ul class="sub-menu">
+<body>
+  <nav>
+    <div class="nav-container">
+      <ul class="menu-left">
         <li><a href="/rate-playlist">RATE</a></li>
         <li><a href="/build-playlist">BUILD</a></li>
         <li><a href="/compare">COMPARE</a></li>
       </ul>
-    </li>
-    <li><a type="button" href="/about">
-        <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" alt="" class="user-icon" width="50"></a>
-    </li>
-  </ul>
-</nav>
+      <a class="nav-logo" href="/home"><img src="../assets/vr-logo@2x.png" width="150"></a>
+      <ul class="menu-right">
+        <li><a href="/search">BROWSE</a></li>
+        <li><a href="/about"><img [src]="profile_pic" class="user-icon" width="50"></a></li>
+      </ul>
+      </div>
+  </nav>
+</body>
+ 
+
 

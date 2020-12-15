@@ -1,13 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
 body {
-	background-color: var(--dark);
-	color: var(--light);
-	font-family: 'Lato', sans-serif;
+	background-color: white;
+	font-family: 'Poppins';
+	margin-left: 70px;
+    margin-right: 70px;
 }
 
 h1 {
-	font-weight: 900;
+	font-weight: bold;
+	font-size: 50px;
 }
 
 h2, h3 {
@@ -19,5 +21,8 @@ button, .btn {
 }
 
 a {
-	color: var(--orange);
+	color: black;
+}
+a:hover {
+	color: #F47458;
 }
