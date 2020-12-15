@@ -1,22 +1,42 @@
+
 nav {
-    padding: 20px;
+    padding-bottom: 50px;
+    padding-top: 20px;
 }
-li {
+ul {
+    padding: 0;
     list-style-type: none;
 }
 .nav-container {
     display: flex;
     flex-direction: row;
+    width: 100%;
     justify-content: space-between;
-    align-items: center;
-}
+}   
 .nav-logo {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
 }
-.sub-menu {
+
+.menu-left {
     display: flex;
     flex-direction: row;
+    flex: 1;
+    justify-content: flex-start;
+    align-items: center;
+}
+.menu-left li:not(:last-child) {
+    padding-right: 50px;
+}
+.menu-right {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+}
+.menu-right li {
+    padding-left: 50px;
 }
 
 .user-icon {
