@@ -147,6 +147,11 @@ router.get('/me/playlists', function(req, res, next) {
 	makeAPIRequest('https://api.spotify.com/v1/me/playlists', res);
 });
 
+router.get('/playlists/:id', function(req, res, next) {
+	var id = req.params.id;
+	makeAPIRequest('https://api.spotify.com/v1/playlists/' + id, res);
+});
+
 router.get('/playlists/:id/tracks', function(req, res, next) {
 	var id = req.params.id;
 	makeAPIRequest('https://api.spotify.com/v1/playlists/' + id + '/tracks', res);

@@ -21,6 +21,7 @@ import { RatePlaylistComponent } from './pages/rate-playlist/rate-playlist.compo
 import { BuildPlaylistComponent } from './pages/build-playlist/build-playlist.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PlaylistListComponent } from './components/playlist-list/playlist-list.component';
+import { PlaylistComponent } from './components/playlist/playlist.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { PlaylistListComponent } from './components/playlist-list/playlist-list.
     RatePlaylistComponent,
     BuildPlaylistComponent,
     NavbarComponent,
-    PlaylistListComponent
+    PlaylistListComponent,
+    PlaylistComponent
   ],
   imports: [
     BrowserModule,
