@@ -16,6 +16,7 @@ export class MoodAlgorithmService {
   // PUBLIC FUNCTIONS - THESE 3 FUNCTIONS ARE THE ONLY ONES THAT SHOULD BE CALLED OUTSIDE THIS CLASS
   ratePlaylist(playlist: PlaylistData): Object {
     // given a playlist, rate the playlist by its moods and return an object of its rankings. for example: [{love: 40}, {happy: 20}, {sad: 20}]
+    this.getAudioFeaturesForTracks(this.getTracksFromPlaylist(playlist.id));
     return;
   }
 
@@ -35,6 +36,13 @@ export class MoodAlgorithmService {
   // }
 
   // PRIVATE FUNCTIONS - SHOULD ONLY BE ACCESSIBLE BY OTHER FUNCTIONS IN THIS CLASS - make them public to test them tho //
+  private getTracksFromPlaylist(playlistId:string):any{
+    this.spotifyService.getTracksFromPlaylist(playlistId).then(data => {
+      console.log(data);
+      return data;
+    });
+  }
+  
   getAudioFeaturesForTracks(tracks: TrackData[]): any {
     // given a list of tracks, get the IDs and call getAudioFeaturesforMultipleTracks() from spotifyService and returns an array of track-feature items.
     let idList = [];
