@@ -28,7 +28,7 @@ export class RatePlaylistComponent implements OnInit {
 
   ratePlaylist(){
     this.showResults=true;
-    this.moodService.getAudioFeaturesForTracks(this.selectedPlaylist.tracks);
+    this.moodService.ratePlaylist(this.selectedPlaylist);
   }
 
 };
