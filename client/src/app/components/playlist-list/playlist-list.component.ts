@@ -14,7 +14,8 @@ export class PlaylistListComponent implements OnInit {
   selectedPlaylistTracks:TrackData[];
   showResults:boolean;
 
-  constructor(private spotifyService:SpotifyService) { }
+  constructor(private spotifyService:SpotifyService) {
+  }
 
   ngOnInit() {
     this.showResults=false;
@@ -28,12 +29,14 @@ export class PlaylistListComponent implements OnInit {
     this.selectedPlaylist = playlist;
     this.showResults=true;
 
-    this.spotifyService.getTracksFromPlaylist(this.selectedPlaylist.id).then(data => {
-      this.selectedPlaylistTracks = data;
-      console.log('up to 100 songs from ' + this.selectedPlaylist.name + ":")
-      console.log(data);
-    });
-
+    this.getTracksforPlaylist(this.selectedPlaylist.id);
   }
 
+  getTracksforPlaylist(id:string){
+    this.spotifyService.getTracksFromPlaylist(this.selectedPlaylist.id).then(data => {
+      this.selectedPlaylistTracks = data.map(item => {
+        return item;
+      })
+    });
+  }
 }
