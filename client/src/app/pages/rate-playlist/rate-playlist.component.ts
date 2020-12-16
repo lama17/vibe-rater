@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlaylistData } from 'src/app/data/playlist-data';
+import { MoodAlgorithmService } from 'src/app/services/mood-algorithm.service';
 import { SpotifyService } from 'src/app/services/spotify.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class RatePlaylistComponent implements OnInit {
   selectedPlaylist:PlaylistData;
   showResults:boolean;
 
-  constructor(private spotifyService: SpotifyService) { }
+  constructor(private spotifyService: SpotifyService, private moodService: MoodAlgorithmService) { }
 
   ngOnInit() {
     this.showResults = false;
@@ -27,6 +28,7 @@ export class RatePlaylistComponent implements OnInit {
 
   ratePlaylist(){
     this.showResults=true;
+    this.moodService.getAudioFeaturesForTracks(this.selectedPlaylist.tracks);
   }
 
 };
