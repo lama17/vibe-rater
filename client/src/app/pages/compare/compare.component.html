@@ -1,4 +1,33 @@
 <app-navbar></app-navbar>
-<p>
-  compare works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1>Compare playlists</h1>
+      <p>Curious if you and your boo have similar music tastes? Input URLs to two Spotify playlists, and let our vibe-rating algorithm compare the two!</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col md-6 sm-12">
+      <div class="input-group mb-3">
+        <input type="text" [(ngModel)]="playlist1url" class="form-control" placeholder="https://open.spotify.com/playlist/37i9dQZF1DX5gQonLbZD9s?si=bbDnZq2XQTWedoERVZ-_LQ" aria-label="Playlist 1" aria-describedby="basic-addon1">
+      </div>      
+    </div>
+    <div class="col md-6 sm-12">
+      <div class="input-group mb-3">
+        <input type="text" [(ngModel)]="playlist2url" class="form-control" placeholder="https://open.spotify.com/playlist/37i9dQZF1DWUSyphfcc6aL?si=Ai6XOZKmRHi0i8sboOIvbQ" aria-label="Playlist 1" aria-describedby="basic-addon1">
+      </div>      
+    </div>
+  </div>
+  <div class="row">
+    <button (click)="comparePlaylists()" class="btn">Compare playlists</button>
+  </div>
+  <p *ngIf="errorPresent" style="color:red;">{{ errorMsg }}</p>
+</div>
+
+<div class="container" *ngIf="displayResults">
+  <div class="row">
+    <div class="col-12">
+      <h2>Results</h2> 
+    </div>
+  </div>
+</div>
