@@ -5,3 +5,8 @@ input {
 select {
 	margin: 10px;
 }
+
+.search-container {
+	text-align: center;
+	align-items: center;
+}

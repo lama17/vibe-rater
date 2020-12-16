@@ -1,3 +1,9 @@
 table {
 	color: var(--dark);
+	max-width: 100%;
+}
+
+.breaklines {
+	word-wrap: break-word;
+	width: 50%;
 }
