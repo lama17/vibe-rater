@@ -1,10 +1,12 @@
-<!--TODO: bind href to the appropriate local URL for the album/artist/song.-->
-<a href="../../../{{resource.category}}/{{resource.id}}">
-<!--TODO bind src with the album/artist/song image URRL-->
-<img class="d-block w-100" src={{resource.imageURL}}>
-<div class="carousel-caption d-none d-md-block">
-	<!--TODO: populate h5 with the album/artist/song name-->
-	<h5>{{resource.name}}</h5>
-	
-</div>
-</a>
+<body>
+	<!--Bind href to the appropriate local URL for the album/artist/song.-->
+	<a href="../../../{{resource.category}}/{{resource.id}}">
+	<!--Bind src with the album/artist/song image URRL-->
+	<img class="d-block w-100" src={{resource.imageURL}} width="500">
+	<div class="carousel-caption d-none d-md-block">
+		<!--Populate h5 with the album/artist/song name-->
+		<h5>{{resource.name}}</h5>
+		
+	</div>
+	</a>
+</body>

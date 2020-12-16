@@ -1,8 +1,46 @@
+h1 {
+	text-align: center;
+}
 #artistImg {
-	max-width: 100%;
-	max-height: 100%;
+	object-fit: cover;
+	max-width: 400px;
+	height: 400px;
+}
+.row{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding-top: 30px;
+	flex-wrap: nowrap;
 }
 
-app-artist {
-	vertical-align: middle;
+
+
+.artist-tracks {
+	display: flex;
+	flex-direction: column;
+	margin-left: 40px;
+}
+.artist-desc {
+	display: flex;
+	flex-direction: column;
+}
+
+.artist-genres {
+	padding-top: 10px;
+}
+ul {
+	columns: 2;
+	column-gap: 30px;
+	-webkit-columns: 2;
+	-moz-columns: 2;
+}
+
+.artist-albums {
+	text-align: center;
+	padding-right: 10px;
+}
+.sim-artists {
+	text-align: center;
+	padding-left: 10px;
 }

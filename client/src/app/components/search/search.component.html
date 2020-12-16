@@ -1,27 +1,26 @@
 <app-navbar></app-navbar>
-<h1>Search Spotify</h1>
-<!--TODO: bind input's model to searchString-->
-<input [(ngModel)]="searchString">
-<!--TODO: bind select's model to searchCategory-->
-<select [(ngModel)]="searchCategory">
-	<!--TODO: loop over searchCategories to create dropdown options-->
-	<!--populate body and text value https://www.w3schools.com/tags/att_option_selected.asp-->
-	<option value="artist">Artist</option>
-	<option value="album">Album</option>
-	<option value="track">Track</option>
-</select>
-<!--TODO: Call search function when the button is clicked-->
-<button (click)="search()" class="btn btn-light">Search</button>
-<!--TODO: Display a carousel component if searching for an artist or album. Bind carousel's resources and give it a static carouselId.-->
-<div *ngIf="searchCategory == 'artist' || searchCategory == 'album'">
-	<app-carousel [carouselId]="carouselId" [resources]="resources"></app-carousel>
-</div>
+<body>
+	<div class="search-container">
+		<h1>Search Spotify</h1>
+		<!--Bind input's model to searchString-->
+		<input [(ngModel)]="searchString">
+		<!--Bind select's model to searchCategory-->
+		<select [(ngModel)]="searchCategory">
+			<!--Loop over searchCategories to create dropdown options-->
+			<option value="artist">Artist</option>
+			<option value="album">Album</option>
+			<option value="track">Track</option>
+		</select>
+		<!--Call search function when the button is clicked-->
+		<button (click)="search()">Search</button>
+		<!--Display a carousel component if searching for an artist or album. Bind carousel's resources and give it a static carouselId.-->
+		<div *ngIf="searchCategory == 'artist' || searchCategory == 'album'">
+			<app-carousel [carouselId]="carouselId" [resources]="resources"></app-carousel>
+		</div>
+		<div *ngIf="searchCategory == 'track'">
+			<app-track-list [tracks]="resources"></app-track-list>
+		</div>
 
-<div *ngIf="searchCategory == 'track'">
-	<app-track-list [tracks]="resources"></app-track-list>
-</div>
+	</div>	
 
-
-
-<!--*ngIf="searchCategory == artist"-->
-<!--TODO: Display a track-list component if searching for a track. Bind track-list's tracks.-->
+</body>

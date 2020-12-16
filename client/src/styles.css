@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-
 body {
 	background-color: white;
 	font-family: 'Poppins';
@@ -16,8 +15,25 @@ h2, h3 {
 	font-weight: 700;
 }
 
+h5 {
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 1.0;
+}
+
 button, .btn {
+	background-color: #ee9480;
 	margin: 10px;
+	border-radius: 5px;
+	border: none;
+	color: white;
+	padding: 3px 7px;
+	
+}
+
+button:hover, .btn:hover {
+	background-color: #F47458;
+	color: white;
 }
 
 a {
