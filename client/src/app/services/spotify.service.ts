@@ -57,7 +57,7 @@ getPlaylist(playlistId:string):Promise<PlaylistData>{
       return trackData;
     });
   }
-
+  
   getTracksFromPlaylist(playlistId:string):Promise<TrackData[]> {
     // returns tracks for a specific playlist
     return this.sendRequestToExpress('/playlists/' + encodeURIComponent(playlistId) + '/tracks').then(response => {
@@ -172,10 +172,20 @@ getPlaylist(playlistId:string):Promise<PlaylistData>{
     });
   }
 
+  getSeveralTracks(trackIds:string[]):Promise<TrackData[]>{
+    return this.sendRequestToExpress('/tracks/' + trackIds.slice(0,50)).then(data => {
+      let trackData:TrackData[];
+      trackData = data['tracks'].map(track => {
+        return new TrackData(track);
+      });
+      console.log(trackData);
+      return trackData;
+    });
+  }
+
   getAudioFeaturesForTrack(trackId:string):Promise<TrackFeature[]> {
     //TODO: use the audio features for track endpoint to make a request to express.
     return this.sendRequestToExpress(`/track-audio-features/${encodeURIComponent(trackId)}`).then((data) => {
-      console.log(data)
       var featuresArray = [];
       featuresArray.push(new TrackFeature('danceability', data['danceability']));
       featuresArray.push(new TrackFeature('energy', data['energy']));
@@ -188,5 +198,16 @@ getPlaylist(playlistId:string):Promise<PlaylistData>{
 
   });
 }
+
+  getAudioFeaturesForMultipleTracks(trackIds:string[]):any{
+    return this.sendRequestToExpress('/audio-features/' + trackIds).then(data => {
+      let featuresList = new Array;
+      featuresList = data['audio_features'].map(audiofeature => {
+        return audiofeature;
+      });
+      console.log(featuresList);
+      return featuresList;
+    });
+  }
 
 }
