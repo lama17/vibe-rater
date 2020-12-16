@@ -23,6 +23,7 @@ IDs: 18774398, 70919612
 https://mdbootstrap.com/docs/angular/navigation/navbar/
 https://developer.spotify.com/documentation/web-api/reference/
 https://forum.freecodecamp.org/t/bootstrap-carousel-controls-color/331196/2 
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/ 
 
 4. What classmates or other individuals did you consult as part of this assignment? What did you discuss?
 
