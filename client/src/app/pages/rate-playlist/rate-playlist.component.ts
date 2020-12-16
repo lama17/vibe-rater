@@ -8,16 +8,25 @@ import { SpotifyService } from 'src/app/services/spotify.service';
   styleUrls: ['./rate-playlist.component.css']
 })
 export class RatePlaylistComponent implements OnInit {
-	playlists:PlaylistData[];
+  playlists:PlaylistData[];
+  selectedPlaylist:PlaylistData;
+  showResults:boolean;
 
   constructor(private spotifyService: SpotifyService) { }
 
   ngOnInit() {
-    //TODO: inject spotifyService and use it to get the album data and the tracks for the album
+    this.showResults = false;
     this.spotifyService.getMyPlaylists().then(data => {
       this.playlists = data;
-      console.log(this.playlists)
     });
+  }
+
+  selected(){
+    console.log(this.selectedPlaylist.name);
+  }
+
+  ratePlaylist(){
+    this.showResults=true;
   }
 
 };

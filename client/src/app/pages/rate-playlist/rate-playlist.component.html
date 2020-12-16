@@ -1,5 +1,23 @@
 <app-navbar></app-navbar>
-<div class="col-6">
-    <h1>Select a playlist</h1>
-    <app-playlist-list [playlists]="playlists"></app-playlist-list>
-	</div>
+<div class='container'>
+    <div class='row'>
+    <div class="col-12">
+        <h1>Rate a playlist</h1>
+        <p>Choose a playlist below to run through our vibe-ranking algorithm!</p>
+        <div class="input-group mb-3">
+            <select class="custom-select" [(ngModel)]="selectedPlaylist" (change)="selected()">
+              <option *ngFor="let playlist of playlists; let i=index" [ngValue]="playlist">{{ playlist.name }}</option>
+            </select>
+            <button class="btn btn-outline-secondary" (click)="ratePlaylist()" type="button">Rate Playlist</button>
+          </div>
+        </div>
+    </div>
+</div>
+
+<div class='container' *ngIf="showResults">
+    <div class='row'>
+        <div class="col-12">
+            <h3>~Vibes~ for {{ selectedPlaylist.name }}</h3>
+        </div>
+    </div>
+</div>
