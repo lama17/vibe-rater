@@ -34,7 +34,9 @@ export class SpotifyService {
     return this.sendRequestToExpress('/me/playlists').then(data => {
       let playlistData:PlaylistData[];
       playlistData = data['items'].map(playlist => {
+        console.log(new PlaylistData(playlist));
         return new PlaylistData(playlist);
+
     });
     return playlistData;
   });
