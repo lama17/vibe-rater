@@ -26,6 +26,7 @@ https://forum.freecodecamp.org/t/bootstrap-carousel-controls-color/331196/2
 https://css-tricks.com/snippets/css/a-guide-to-flexbox/ 
 https://stackoverflow.com/questions/37077199/bootstrap-place-progress-bar-value-on-right-side
 https://getbootstrap.com/docs/4.1/components/progress/
+https://pro.propeller.in/components/card-examples
 
 4. What classmates or other individuals did you consult as part of this assignment? What did you discuss?
 

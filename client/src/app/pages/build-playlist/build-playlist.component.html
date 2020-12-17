@@ -1,73 +1,94 @@
 <app-navbar></app-navbar>
+<body>
 <div class="container">
 <div class="row">
   <div class="col-12">
     <h1>Build a playlist</h1>
     <p *ngIf="!showResults">Select a mood below, and we'll return a playlist of songs from your Spotify library that perfectly match.</p>
-    <p *ngIf="showResults">Here is your ideal <b>{{ mood }}</b> playlist:</p>
+    <p *ngIf="showResults">Here is your ideal <b>~{{ mood }}~</b> playlist:</p>
+      <!-- Andrea: was thinking of keeping the mood cards at the top and displaying the generated playlist under. The user can then toggle between moods & playlists???-->
   </div>
 </div>
 </div>
 
 <div class="container">
   <h3 *ngIf="showResults">Try another mood:</h3>
-  <div class='row'>
-    <div class="col-md-3 col-sm-12">
-       <div class="card" (click)="selectMood('happy')">
-        <img src="../../../assets/vr-logo@2x.png" class="card-img-top" alt="Happy">
-        <div class="card-body">
-        <h5 class="card-title">Happy</h5>
-        </div>
+
+  <div class="row">
+  <!-- Card for Happy -->
+  <div class="col-sm-3">
+    <div class="card pmd-list" (click)="selectMood('happy')">
+      <div class="list-group-item d-flex flex-row align-items-center">
+          <img class="pmd-list-icon pmd-sm" src="../../../assets/happy.svg" alt="Happy" width="60">
+          <span class="media-body"><h4 style="text-align: center;">Happy</h4></span>
       </div>
-    </div>
-    <div class="col-md-3 col-sm-12">
-      <div class="card" (click)="selectMood('sad')">
-      <img src="../../../assets/vr-logo@2x.png" class="card-img-top" alt="Sad">
-      <div class="card-body">
-      <h5 class="card-title">Sad</h5>
-      </div>
-    </div>
-    </div>
-    <div class="col-md-3 col-sm-12">
-     <div class="card" (click)="selectMood('energetic')">
-      <img src="../../../assets/vr-logo@2x.png" class="card-img-top" alt="Energetic">
-      <div class="card-body">
-      <h5 class="card-title">Energetic</h5>
-      </div>
-    </div>
-    </div>
-    <div class="col-md-3 col-sm-12">
-      <div class="card" (click)="selectMood('focus')">
-      <img src="../../../assets/vr-logo@2x.png" class="card-img-top" alt="Focus">
-      <div class="card-body">
-      <h5 class="card-title">Focus</h5>
-      </div>
-    </div>
     </div>
   </div>
+  
+  <!-- Card for Sad -->
+  <div class="col-sm-3">
+    <div class="card pmd-list" (click)="selectMood('sad')">
+      <div class="list-group-item d-flex flex-row align-items-center">
+          <img class="pmd-list-icon pmd-sm" src="../../../assets/sad.svg" alt="Sad" width="60">
+          <span class="media-body"><h4 style="text-align: center;">Sad</h4></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card for Energetic -->
+  <div class="col-sm-3">
+    <div class="card pmd-list" (click)="selectMood('energetic')">
+      <div class="list-group-item d-flex flex-row align-items-center">
+          <img class="pmd-list-icon pmd-sm" src="../../../assets/energetic.svg" alt="Energetic" width="60">
+          <span class="media-body"><h4 style="text-align: center;">Energetic</h4></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card for Focus -->
+  <div class="col-sm-3">
+    <div class="card pmd-list" (click)="selectMood('focus')">
+      <div class="list-group-item d-flex flex-row align-items-center">
+          <img class="pmd-list-icon pmd-sm" src="../../../assets/focus.svg" alt="Focus" width="60">
+          <span class="media-body"><h4 style="text-align: center;">Focus</h4></span>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
   <div class="row">
-    <div class="col-md-3 col-sm-12">
-      <div class="card" (click)="selectMood('chill')">
-      <img src="../../../assets/vr-logo@2x.png" class="card-img-top" alt="Chill">
-      <div class="card-body">
-      <h5 class="card-title">Chill</h5>
+  <!-- Card for Chill -->
+  <div class="col-sm-3">
+    <div class="card pmd-list" (click)="selectMood('chill')">
+      <div class="list-group-item d-flex flex-row align-items-center">
+          <img class="pmd-list-icon pmd-sm" src="../../../assets/chill.svg" alt="Chill" width="60">
+          <span class="media-body"><h4 style="text-align: center;">Chill</h4></span>
       </div>
     </div>
-    </div>
-    <div class="col-md-3 col-sm-12">
-      <div class="card" (click)="selectMood('love')">
-      <img src="../../../assets/vr-logo@2x.png" class="card-img-top" alt="Love">
-      <div class="card-body">
-      <h5 class="card-title">Love</h5>
+  </div>
+
+  <!-- Card for Love -->
+  <div class="col-sm-3">
+    <div class="card pmd-list" (click)="selectMood('love')">
+      <div class="list-group-item d-flex flex-row align-items-center">
+          <img class="pmd-list-icon pmd-sm" src="../../../assets/love.svg" alt="Love" width="60">
+          <span class="media-body"><h4 style="text-align: center;">Love</h4></span>
       </div>
     </div>
-    </div>
-    <div class="col-md-3 col-sm-12"><div class="card" (click)="selectMood('sleep')">
-      <img src="../../../assets/vr-logo@2x.png" class="card-img-top" alt="Sleep">
-      <div class="card-body">
-      <h5 class="card-title">Sleep</h5>
+  </div>
+
+  <!-- Card for Sleep -->
+  <div class="col-sm-3">
+    <div class="card pmd-list" (click)="selectMood('sleep')">
+      <div class="list-group-item d-flex flex-row align-items-center">
+          <img class="pmd-list-icon pmd-sm" src="../../../assets/sleep.svg" alt="Sleep" width="60">
+          <span class="media-body"><h4 style="text-align: center;">Sleep</h4></span>
       </div>
     </div>
-    </div>
+  </div>
+
+  </div>
+
 </div>
-</div>
+</body>
