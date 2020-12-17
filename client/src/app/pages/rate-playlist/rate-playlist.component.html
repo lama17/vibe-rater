@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+<body>
 <div class='container'>
     <div class='row'>
     <div class="col-12">
@@ -8,7 +9,7 @@
             <select class="custom-select" [(ngModel)]="selectedPlaylist" (change)="selected()">
               <option *ngFor="let playlist of playlists; let i=index" [ngValue]="playlist">{{ playlist.name }}</option>
             </select>
-            <button class="btn btn-outline-secondary" (click)="display()" type="button">Rate Playlist</button>
+            <button class="btn" style="margin-left: 10px;" (click)="display()" type="button">Rate Playlist</button>
           </div>
         </div>
     </div>
@@ -19,13 +20,21 @@
     <div class='row'>
         <div class="col-12">
             <h3 *ngIf="updateName">~Vibes~ for {{selectedPlaylist.name}}</h3>
+            <!-- link to playlist on spotify -->
+            <a [href]="selectedPlaylist.url" class="btn" role="button" target="_blank">Open {{selectedPlaylist.name}} on Spotify</a>
         </div>
     </div>
-    <!-- cards -->
+
+    <!-- thermometer results -->
+    <div class="mood-therm" style="padding-top:40px;">
+        <app-thermometer *ngFor="let mood of playlistMoods" [feature]="mood"></app-thermometer>
+    </div>
+        
+    <!-- cards
     <div class="row">
-        <div class="col-6">
-            <div class="card pmd-list" *ngFor="let mood of sortedSelectedPlaylistMoods">
-                <div class="list-group-item d-flex flex-row align-items-center">
+        <div class="col-sm-4" *ngFor="let mood of sortedSelectedPlaylistMoods; let i=index">
+            <div class="card pmd-list">
+                <div class="list-group-item d-flex flex-row align-items-center" *ngIf="i<2">
                     <img class="pmd-list-icon pmd-sm" src="../../../assets/{{ mood[0] }}.svg" alt="{{ mood[0] }}" width="60">
                     <span class="media-body"><h3 style="text-align: center;">{{ mood[0] }}</h3>
                     <h5 style="text-align: center;">{{ (mood[1] / total * 100.0) | number:0 }}%</h5></span>
@@ -33,4 +42,17 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card pmd-list" *ngFor="let mood of sortedSelectedPlaylistMoods; let i=index" >
+                <div class="list-group-item d-flex flex-row align-items-center" *ngIf="i>1">
+                    <img class="pmd-list-icon pmd-sm" src="../../../assets/{{ mood[0] }}.svg" alt="{{ mood[0] }}" width="60">
+                    <span class="media-body"><h3 style="text-align: center;">{{ mood[0] }}</h3>
+                    <h5 style="text-align: center;">{{ (mood[1] / total * 100.0) | number:0 }}%</h5></span>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
 </div>
+</body>
