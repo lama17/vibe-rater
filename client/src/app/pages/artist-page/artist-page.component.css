@@ -1,10 +1,7 @@
-h1 {
-	text-align: center;
-}
 #artistImg {
 	object-fit: cover;
-	max-width: 400px;
-	height: 400px;
+	max-width: 500px;
+	height: 500px;
 }
 .row{
 	display: flex;
@@ -24,6 +21,7 @@ h1 {
 .artist-desc {
 	display: flex;
 	flex-direction: column;
+
 }
 
 .artist-genres {

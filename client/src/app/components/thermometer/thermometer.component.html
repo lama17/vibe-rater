@@ -1,4 +1,15 @@
-<div class="progress">
-	<!--TODO: set style.background-color based on the audio feature's color and style.width via the audio feature's percent. Display feature name and percent.-->
-  <div style.background-color={{feature.color}} style.width={{feature.percentageString}} class="progress-bar" role="progressbar">{{feature.name}}: {{feature.percentageString}}</div>
+<div class="row">
+  <!-- Labels on right and left side -->
+
+  <div class="col-sm-3"><h4>{{feature.name}}: </h4></div>
+
+  <div class="col-sm-8">
+  <div class="progress" style="height: 20px;">
+    <!-- Display progress bar -->
+    <div class="progress-bar progress-bar-striped progress-bar-animated" style.background-color={{feature.color}} style.width={{feature.percentageString}} role="progressbar"></div>
+  </div>
+  </div>
+
+  <div class="col-sm-1"><h4>{{feature.percentageString}}</h4></div>
+
 </div>

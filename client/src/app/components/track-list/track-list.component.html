@@ -5,13 +5,9 @@
 			<th scope="col">Track</th>
 			<th scope="col">Duration</th>
 			<!--TODO: Use *ngIf to hide if hideArtist is true-->
-			<div *ngIf="!hideArtist">
-				<th scope="col">Primary Artist</th>
-			</div>
+			<th *ngIf="!hideArtist" scope="col">Primary Artist</th>
 			<!--TODO: Use *ngIf to hide if hideAlbum is true-->
-			<div *ngIf="!hideAlbum">
-				<th scope="col">Album</th>
-			</div>
+			<th *ngIf="!hideAlbum" scope="col">Album</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -24,15 +20,12 @@
 					<a href="../../../track/{{track.id}}">{{track.name}}</a>
 				</td>
 				<!--TODO: display the track's duration-->
-				<td>{{track.duration_ms}}</td>
+				<td>{{track.durationStr}}</td>
 				<!--TODO: Use *ngIf to hide if hideArtist is true; link to the first artist's endpoint and display the first artist's name-->
-				<div *ngIf="!hideArtist">
-					<td class="breaklines"><a href="../../artist/{{track.artists[0].id}}">{{track.artists[0].name}}</a></td>
-				</div>
+				<td *ngIf="!hideArtist" class="breaklines"><a href="../../artist/{{track.artists[0].id}}">{{track.artists[0].name}}</a></td>
 				<!--TODO: Use *ngIf to hide if hideAlbum is true; link to the album's endpoint and display the album's name-->
-				<div *ngIf="!hideAlbum">
-					<td class="breaklines"><a href="../../album/{{track.album.id}}">{{track.album.name}}</a></td>
-				</div>
+				<td *ngIf="!hideAlbum" class="breaklines"><a href="../../album/{{track.album.id}}">{{track.album.name}}</a></td>
+
 			</tr>
 	</tbody>
 </table>

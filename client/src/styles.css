@@ -15,6 +15,12 @@ h2, h3 {
 	font-weight: 700;
 }
 
+h4 {
+	font-size: 16px;
+	font-weight: 500;
+
+}
+
 h5 {
 	font-size: 16px;
 	font-weight: 400;
@@ -23,7 +29,6 @@ h5 {
 
 button, .btn {
 	background-color: #ee9480;
-	margin: 10px;
 	border-radius: 5px;
 	border: none;
 	color: white;
