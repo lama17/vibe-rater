@@ -2,8 +2,11 @@ table {
 	color: var(--dark);
 	max-width: 100%;
 }
-
+td, th {
+	text-align: start;
+	padding-right: 10px;
+}
 .breaklines {
 	word-wrap: break-word;
-	width: 50%;
+	width: 30%;
 }

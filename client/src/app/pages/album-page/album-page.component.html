@@ -10,12 +10,12 @@
 			<div id="artist-list">
 				<h5 *ngFor="let artist of album.artists">
 					<!--Link to artist page, display artist name-->
-					Artist: <a href="../../../artist/{{artist.id}}">{{artist.name}}</a>
+					<strong>Artist: </strong> <a href="../../../artist/{{artist.id}}">{{artist.name}}</a>
 				</h5>
 			</div>
 			<p *ngFor="let artist of album.artists" id="artist-button">
 				<!--TODO: link to artist page on spotify, display artist name-->
-				<a href={{artist.url}} class="btn btn-light" role="button" target="_blank" >Open {{artist.name}} on Spotify</a>
+				<a href={{artist.url}} class="btn" role="button" target="_blank" >Open {{artist.name}} on Spotify</a>
 			</p>
 		</div>
 		<div class="col-6">

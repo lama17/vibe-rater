@@ -1,11 +1,13 @@
 <app-navbar></app-navbar>
 <body>
 	<div *ngIf="artist">
-		<h1 style="text-align: center;">{{artist.name}}</h1>
+		<h1>{{artist.name}}</h1>
 		<div class="row">
 			<div class="artist-desc">
 				<!--Link to artist page on spotify, display artist name-->
-				<a [href]="artist.url" class="btn btn-light" role="button" target="_blank">Open {{artist.name}} on Spotify</a>
+				<p>
+					<a [href]="artist.url" class="btn" role="button" target="_blank">Open {{artist.name}} on Spotify</a>
+				</p>
 				<!--Populate with artist image URL-->
 				<img id="artistImg" src={{artist.imageURL}}>
 				<div class="artist-genres">
