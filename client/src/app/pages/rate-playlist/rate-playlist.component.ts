@@ -14,7 +14,10 @@ export class RatePlaylistComponent implements OnInit {
   playlists:PlaylistData[];
   selectedPlaylist:PlaylistData;
   showResults:boolean;
-  selectedPlaylistTracks:TrackData[]
+  updateName:boolean;
+  selectedPlaylistMoods;
+  sortedSelectedPlaylistMoods:[any, any][];
+  total;
 
   constructor(private spotifyService: SpotifyService, private moodService: MoodAlgorithmService) { }
 
@@ -23,19 +26,30 @@ export class RatePlaylistComponent implements OnInit {
     this.spotifyService.getMyPlaylists().then(data => {
       this.playlists = data;
     });
+    this.selectedPlaylist = this.playlists[0];
   }
 
   selected(){
+    this.updateName=false;
+    this.showResults=false;
+
+    // get mood rating for playlist
     console.log(this.selectedPlaylist.name);
+    this.moodService.ratePlaylist(this.selectedPlaylist).then(data=>{
+      this.selectedPlaylistMoods = data;
+    });
   }
 
-  ratePlaylist(){
+  display(){
+    this.updateName=true;
     this.showResults=true;
-    //this.moodService.ratePlaylist(this.selectedPlaylist);
-   // this.moodService.getAudioFeaturesForTracks(this.selectedPlaylist.id);
-    this.moodService.ratePlaylist(this.selectedPlaylist);
-    this.moodService.comparePlaylists("37i9dQZF1DX0Yxoavh5qJV", "3dELPcYpgHlXjUxpIQ6LE5");
-    this.moodService.buildPlaylist("Sad");
+
+    // sorts moods to display them in order from highest -> lowest
+    this.sortedSelectedPlaylistMoods = Object.entries(this.selectedPlaylistMoods).sort((a:any,b:any) => b[1]-a[1]);
+
+    // gets total of songs in  playlist (without calling spotify api), to calculate percentages
+    const gettotal = obj => Object.values(obj).reduce((a:number, b:number) => a + b);
+    this.total = gettotal(this.selectedPlaylistMoods);
   }
 
 };

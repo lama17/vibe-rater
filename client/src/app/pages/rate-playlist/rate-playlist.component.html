@@ -8,16 +8,29 @@
             <select class="custom-select" [(ngModel)]="selectedPlaylist" (change)="selected()">
               <option *ngFor="let playlist of playlists; let i=index" [ngValue]="playlist">{{ playlist.name }}</option>
             </select>
-            <button class="btn btn-outline-secondary" (click)="ratePlaylist()" type="button">Rate Playlist</button>
+            <button class="btn btn-outline-secondary" (click)="display()" type="button">Rate Playlist</button>
           </div>
         </div>
     </div>
 </div>
 
-<div class='container' *ngIf="showResults">
+<!-- results -->
+<div class='container' style="margin-top:20px;" *ngIf="showResults">
     <div class='row'>
         <div class="col-12">
-            <!-- <h3>~Vibes~ for {{ selectedPlaylist.name }}</h3> -->
+            <h3 *ngIf="updateName">~Vibes~ for {{selectedPlaylist.name}}</h3>
+        </div>
+    </div>
+    <!-- cards -->
+    <div class="row">
+        <div class="col-6">
+            <div class="card pmd-list" *ngFor="let mood of sortedSelectedPlaylistMoods">
+                <div class="list-group-item d-flex flex-row align-items-center">
+                    <img class="pmd-list-icon pmd-sm" src="../../../assets/{{ mood[0] }}.svg" alt="{{ mood[0] }}" width="60">
+                    <span class="media-body"><h3 style="text-align: center;">{{ mood[0] }}</h3>
+                    <h5 style="text-align: center;">{{ (mood[1] / total * 100.0) | number:0 }}%</h5></span>
+                </div>
+            </div>
         </div>
     </div>
 </div>
