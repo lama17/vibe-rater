@@ -205,7 +205,7 @@ getPlaylist(playlistId:string):Promise<PlaylistData>{
       featuresList = data['audio_features'].map(audiofeature => {
         return audiofeature;
       });
-      console.log(featuresList);
+      //console.log(featuresList);
       return featuresList;
     });
   }
