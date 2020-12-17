@@ -2,6 +2,7 @@ import * as chroma from 'chroma-js';
 
 export class TrackFeature {
 	static FeatureTypes = ['danceability', 'energy', 'speechiness', 'acousticness', 'instrumentalness', 'liveness', 'valence'];
+	static MoodTypes = ['energetic', 'sad', 'calm', 'happy']
 
 	id:string;
 	name:string;
