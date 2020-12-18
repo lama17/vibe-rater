@@ -48,10 +48,10 @@ export class CompareComponent implements OnInit {
     this.displayResults = false;
     this.urls = [this.playlist1url, this.playlist2url];
 
-    // check if urls are the same
+    // check if urls are the same or if no playlists are entered
     if(this.playlist1url == this.playlist2url){
       this.errorPresent = true;
-      this.errorMsg = "URLs cannot be identical, please try again."
+      this.errorMsg = "URLs cannot be identical or empty, please try again."
       return;
     }
 
