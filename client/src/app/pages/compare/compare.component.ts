@@ -32,8 +32,8 @@ export class CompareComponent implements OnInit {
   constructor(private spotifyService:SpotifyService,  private moodService: MoodAlgorithmService) { }
 
   ngOnInit() {
-    this.playlist1url = 'https://open.spotify.com/playlist/0NCspsyf0OS4BsPgGhkQXM?si=Gl-7pzdxT0OQ6ok5dtwjuQ';
-    this.playlist2url = 'https://open.spotify.com/playlist/3FqVzPW4y0v6WhR63ps9RH?si=VfTV17Z9Qt2I8F96OOuJmA';
+    // this.playlist1url = 'https://open.spotify.com/playlist/0NCspsyf0OS4BsPgGhkQXM?si=Gl-7pzdxT0OQ6ok5dtwjuQ';
+    // this.playlist2url = 'https://open.spotify.com/playlist/3FqVzPW4y0v6WhR63ps9RH?si=VfTV17Z9Qt2I8F96OOuJmA';
     this.urls = [this.playlist1url, this.playlist2url];
     this.playlists = [this.playlist1, this.playlist2];
     this.displayResults = false;
