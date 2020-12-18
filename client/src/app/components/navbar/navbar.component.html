@@ -1,5 +1,5 @@
 <body>
-  <nav>
+  <nav id="header">
     <div class="nav-container">
       <ul class="menu-left">
         <li><a href="/rate-playlist">RATE</a></li>
@@ -13,6 +13,49 @@
       </ul>
       </div>
   </nav>
+
+
+<!-- MOBILE HEADER -->
+<div id="mobile-header">
+  <div class="inner-header">
+    <div class="logo-container">
+        <a href="/home"><img src="../assets/vr-logo@2x.png" alt="Site logo"></a>
+    </div>
+  <!-- Hamburger icon -->
+  <div id="toggle-icon" (click)="open_menu()">
+    <i class="fa fa-bars"></i>
+  </div>
+  </div>
+
+  <div id="overlay" style="display: none;">
+    <!-- Close icon -->
+    <div id="close-icon" (click)="close_menu()">
+      <i class="fa fa-close"></i>
+    </div>
+
+    <div class="navmenu-overlay">
+      <ul>
+        <li><a href="/rate-playlist" (click)="close_menu()"><h3>RATE</h3></a></li>
+        <li><a href="/build-playlist" (click)="close_menu()"><h3>BUILD</h3></a></li>
+        <li><a href="/compare" (click)="close_menu()"><h3>COMPARE</h3></a></li>
+        <li><a href="/search" (click)="close_menu()"><h3>BROWSE</h3></a></li>
+        <li><a href="/about" (click)="close_menu()"><h3>MY ACCOUNT</h3></a></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+<script>
+  $(document).ready(function() {
+    $("#toggle-icon").click (function () {
+      var nav = document.getElementById("overlay").style.display="flex";
+    });
+
+    function close_menu() {
+      var nav = document.getElementById("overlay").style.display="none";
+    }
+  });
+</script>
 </body>
 
  

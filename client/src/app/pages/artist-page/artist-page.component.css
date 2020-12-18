@@ -1,44 +1,108 @@
-#artistImg {
-	object-fit: cover;
-	max-width: 500px;
-	height: 500px;
-}
-.row{
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	padding-top: 30px;
-	flex-wrap: nowrap;
-}
-
-
-
-.artist-tracks {
-	display: flex;
-	flex-direction: column;
-	margin-left: 40px;
-}
-.artist-desc {
-	display: flex;
-	flex-direction: column;
-
-}
-
-.artist-genres {
-	padding-top: 10px;
-}
-ul {
-	columns: 2;
-	column-gap: 30px;
-	-webkit-columns: 2;
-	-moz-columns: 2;
+@media screen and (max-width: 768px) {
+	#artistImg {
+		object-fit: cover;
+		max-width: 400px;
+		height: auto;
+	}
+	.row{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding-top: 30px;
+		flex-wrap: nowrap;
+	}
+	h1 {
+		text-align: center;
+	}
+	h3 {
+		text-align: center;
+	}
+	.artist-desc {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding-bottom: 10px;
+	}
+	ul {
+		columns: 2;
+		column-gap: 30px;
+		-webkit-columns: 2;
+		-moz-columns: 2;
+	}
 }
 
-.artist-albums {
-	text-align: center;
-	padding-right: 10px;
+@media screen and (min-width: 768px) and (max-width: 1080px) { 
+	#artistImg {
+		object-fit: cover;
+		max-width: 400px;
+		height: auto;
+	}
+	.row{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding-top: 30px;
+		flex-wrap: nowrap;
+	}
+	h1 {
+		text-align: center;
+	}
+	h3 {
+		text-align: center;
+	}
+	.artist-desc {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding-bottom: 10px;
+	}
+	ul {
+		columns: 2;
+		column-gap: 30px;
+		-webkit-columns: 2;
+		-moz-columns: 2;
+	}
 }
-.sim-artists {
-	text-align: center;
-	padding-left: 10px;
+
+@media screen and (min-width: 1080px) {
+	#artistImg {
+		object-fit: cover;
+		max-width: 500px;
+		height: 500px;
+	}
+	.row{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		padding-top: 30px;
+		flex-wrap: nowrap;
+	}
+	.artist-tracks {
+		display: flex;
+		flex-direction: column;
+		margin-left: 40px;
+	}
+	.artist-desc {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.artist-genres {
+		padding-top: 10px;
+	}
+	ul {
+		columns: 2;
+		column-gap: 30px;
+		-webkit-columns: 2;
+		-moz-columns: 2;
+	}
+
+	.artist-albums {
+		text-align: center;
+		padding-right: 10px;
+	}
+	.sim-artists {
+		text-align: center;
+		padding-left: 10px;
+	}
 }
