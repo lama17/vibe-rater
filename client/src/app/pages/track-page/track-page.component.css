@@ -1,15 +1,54 @@
-.container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.track-desc {
-    display: flex;
-    flex-direction: column;
+@media screen and (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .track-desc {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+   
+    h1, p {
+		text-align: center;
+    }
+    .col-sm-7 {
+        margin-top: 20px;
+        max-width: 100%;
+    }
 }
 
-.thermometer {
-    display: flex;
-    flex-direction: column;
-    width: 60%;
+@media screen and (min-width: 768px) and (max-width: 1080px) { 
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .track-desc {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+   
+    h1, p {
+		text-align: center;
+    }
+    .col-sm-7 {
+        margin-top: 20px;
+        max-width: 100%;
+    }
+}
+
+
+@media screen and (min-width: 1080px) {
+    .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .track-desc {
+        display: flex;
+        flex-direction: column;
+    }
 }

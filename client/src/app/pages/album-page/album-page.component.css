@@ -1,13 +1,53 @@
-#albumImg {
-	max-width: 100%;
-	max-height: 100%;
+@media screen and (max-width: 768px) {
+	#albumImg {
+		object-fit: cover;
+		max-width: 400;
+		height: auto;
+	}
+	h1, h3, h5, p {
+		text-align: center;
+	}
+	.row {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.col-6 {
+		max-width: 100%;
+	}
 }
-h1 {
-	padding-bottom: 20px;
+
+@media screen and (min-width: 768px) and (max-width: 1080px) { 
+	#albumImg {
+		object-fit: cover;
+		max-width: 400;
+		height: auto;
+	}
+	h1, h3, h5, p {
+		text-align: center;
+	}
+	.row {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.col-6 {
+		max-width: 100%;
+	}
 }
-#artist-list {
-	margin-top: 20px;
-}
-#artist-button {
-	margin-bottom: -10px;
+
+@media screen and (min-width: 1080px) {
+	#albumImg {
+		max-width: 100%;
+		max-height: 100%;
+	}
+	h1 {
+		padding-bottom: 20px;
+	}
+	#artist-list {
+		margin-top: 20px;
+	}
+	#artist-button {
+		margin-bottom: -10px;
+	}
 }

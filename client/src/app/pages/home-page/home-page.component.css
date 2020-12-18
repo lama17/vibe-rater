@@ -1,32 +1,75 @@
-.hero-intro {
-    display: flex;
-    flex-direction: row;
-    padding-bottom: 10px;
-    width: 100%;
-}
-.hero-intro img{
-    width: inherit;
+@media screen and (max-width: 320px) {
+    .hero-intro {
+        display: flex;
+        flex-direction: column-reverse;
+        padding-bottom: 10px;
+        width: 100%;
+    }
+    .hero-intro img{
+        width: inherit;
+    }
+
+    .card-deck {
+        padding-right: 10px;
+    }
+    .card-title {
+        color: #F47458;
+    }
+
+ }
+ /* medium screen*/
+@media screen and (min-width: 320px) { 
+    .hero-intro {
+        display: flex;
+        flex-direction: column-reverse;
+        padding-bottom: 10px;
+        width: 100%;
+    }
+    .hero-intro img{
+        padding-bottom: 20px;
+        width: inherit;
+    }
+    .card-title {
+        color: #F47458;
+    }
+
+
 }
 
-.hero-text {
-    display: flex;
-    flex-direction: column;
-    padding-right: 10px;
-    width: inherit;
-}
+@media screen and (min-width: 992px) {
+    .hero-intro {
+        display: flex;
+        flex-direction: row;
+        padding-bottom: 10px;
+        width: 100%;
+    }
+    .hero-intro img{
+        width: inherit;
+    }
 
-.card a {
-    color: inherit;
-    text-decoration: none;
-}
+    .hero-text {
+        display: flex;
+        flex-direction: column;
+        padding-right: 10px;
+        width: inherit;
+    }
+    .card{
+        width: 18rem;
+    }
 
-.card-body {
-    text-align: center;
-}
-.card-text {
-    padding-top: 10px;
-}
+    .card a {
+        color: inherit;
+        text-decoration: none;
+    }
 
-.card-title {
-    color: #F47458;
+    .card-body {
+        text-align: center;
+    }
+    .card-text {
+        padding-top: 10px;
+    }
+
+    .card-title {
+        color: #F47458;
+    }
 }

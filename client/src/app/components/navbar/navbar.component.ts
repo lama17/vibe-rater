@@ -17,4 +17,16 @@ export class NavbarComponent implements OnInit {
     });
   }
 
+  open_menu() {
+    console.log('hi')
+    document.getElementById("overlay").style.display="flex";
+
+  }
+
+  close_menu() {
+    document.getElementById("overlay").style.display="none";
+  
+  }
+  
+
 }
