@@ -16,7 +16,7 @@ IDs: 18774398, 70919612
 
 
 2. How long, in hours, did it take you to complete this assignment?<br>
-Not sure how long in hours, but we worked on it pretty much non-stop for about one week.
+50+ hours
 
 
 3. What online resources did you consult when completing this assignment? (list specific URLs)
