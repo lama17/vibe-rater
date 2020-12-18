@@ -1,8 +1,8 @@
 # Vibe-Rater (INF 133 Final Project) #
 
 Names: Andrea Lam, Ovya Barani, Rava Rahbari<br>
-Emails: lama17@uci.edu, obarani@uci.edu<br>
-IDs: 18774398, 70919612
+Emails: lama17@uci.edu, obarani@uci.edu<br>, rrahbari@uci.edu
+IDs: 18774398, 70919612, 81044442
 
 1. Which requirements were fulfilled?
 
