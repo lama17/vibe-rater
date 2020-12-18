@@ -15,7 +15,7 @@ IDs: 18774398, 70919612
 - (DONE) Design and develop the user interface 
 
 
-2. How long, in hours, did it take you to complete this assignment?
+2. How long, in hours, did it take you to complete this assignment?<br>
 Not sure how long in hours, but we worked on it pretty much non-stop for about one week.
 
 
@@ -30,8 +30,8 @@ https://pro.propeller.in/components/card-examples<br>
 https://angular.io/api/common/NgForOf<br>
 https://stackoverflow.com/questions/5467129/sort-javascript-object-by-key<br>
 
-4. What classmates or other individuals did you consult as part of this assignment? What did you discuss?
+4. What classmates or other individuals did you consult as part of this assignment? What did you discuss?<br>
 N/A
 
-5. Is there anything special we need to know in order to run your code?
+5. Is there anything special we need to know in order to run your code?<br>
 Similarly to A3, a Spotify access token is needed to run our application!
