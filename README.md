@@ -34,4 +34,4 @@ https://stackoverflow.com/questions/5467129/sort-javascript-object-by-key<br>
 N/A
 
 5. Is there anything special we need to know in order to run your code?<br>
-Similarly to A3, a Spotify access token is needed to run our application!
+Similarly to A3, a Spotify access token (tokens.json) and client ID/secret (client_secret.json) is needed to run our application
