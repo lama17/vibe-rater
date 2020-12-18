@@ -4,20 +4,15 @@
 <div class="row">
   <div class="col-12">
     <h1>Build a playlist</h1>
-    <p *ngIf="!showResults">Select a mood below, and we'll return a playlist of songs from your Spotify library that perfectly match.</p>
-    <p *ngIf="showResults">Here is your ideal <b>~{{ mood }}~</b> playlist:</p>
-      <!-- Andrea: was thinking of keeping the mood cards at the top and displaying the generated playlist under. The user can then toggle between moods & playlists???-->
+    <p>Select a mood below, and we'll return a playlist of songs from your Spotify library that perfectly match.</p>
+      <!-- Andrea: was thinking of keeping the mood cards at the top and displaying the generated playlist under. The user can then toggle between moods & playlists??? ovya: gotcha -->
   </div>
 </div>
-</div>
+<div class="row">
 
-<div class="container">
-  <h3 *ngIf="showResults">Try another mood:</h3>
-
-  <div class="row">
   <!-- Card for Happy -->
   <div class="col-sm-3">
-    <div class="card pmd-list" (click)="selectMood('happy')">
+    <div class="card pmd-list" (click)="selectMood('Happy')">
       <div class="list-group-item d-flex flex-row align-items-center">
           <img class="pmd-list-icon pmd-sm" src="../../../assets/happy.svg" alt="Happy" width="60">
           <span class="media-body"><h4 style="text-align: center;">Happy</h4></span>
@@ -27,7 +22,7 @@
   
   <!-- Card for Sad -->
   <div class="col-sm-3">
-    <div class="card pmd-list" (click)="selectMood('sad')">
+    <div class="card pmd-list" (click)="selectMood('Sad')">
       <div class="list-group-item d-flex flex-row align-items-center">
           <img class="pmd-list-icon pmd-sm" src="../../../assets/sad.svg" alt="Sad" width="60">
           <span class="media-body"><h4 style="text-align: center;">Sad</h4></span>
@@ -37,7 +32,7 @@
 
   <!-- Card for Energetic -->
   <div class="col-sm-3">
-    <div class="card pmd-list" (click)="selectMood('energetic')">
+    <div class="card pmd-list" (click)="selectMood('Energetic')">
       <div class="list-group-item d-flex flex-row align-items-center">
           <img class="pmd-list-icon pmd-sm" src="../../../assets/energetic.svg" alt="Energetic" width="60">
           <span class="media-body"><h4 style="text-align: center;">Energetic</h4></span>
@@ -47,7 +42,7 @@
 
   <!-- Card for Focus -->
   <div class="col-sm-3">
-    <div class="card pmd-list" (click)="selectMood('focus')">
+    <div class="card pmd-list" (click)="selectMood('Focus')">
       <div class="list-group-item d-flex flex-row align-items-center">
           <img class="pmd-list-icon pmd-sm" src="../../../assets/focus.svg" alt="Focus" width="60">
           <span class="media-body"><h4 style="text-align: center;">Focus</h4></span>
@@ -56,13 +51,12 @@
   </div>
 
   </div>
-
   <div class="row">
   <!-- Card for Chill -->
   <div class="col-sm-3">
-    <div class="card pmd-list" (click)="selectMood('chill')">
+    <div class="card pmd-list" (click)="selectMood('Calm')">
       <div class="list-group-item d-flex flex-row align-items-center">
-          <img class="pmd-list-icon pmd-sm" src="../../../assets/chill.svg" alt="Chill" width="60">
+          <img class="pmd-list-icon pmd-sm" src="../../../assets/calm.svg" alt="Calm" width="60">
           <span class="media-body"><h4 style="text-align: center;">Chill</h4></span>
       </div>
     </div>
@@ -70,7 +64,7 @@
 
   <!-- Card for Love -->
   <div class="col-sm-3">
-    <div class="card pmd-list" (click)="selectMood('love')">
+    <div class="card pmd-list" (click)="selectMood('Love')">
       <div class="list-group-item d-flex flex-row align-items-center">
           <img class="pmd-list-icon pmd-sm" src="../../../assets/love.svg" alt="Love" width="60">
           <span class="media-body"><h4 style="text-align: center;">Love</h4></span>
@@ -80,7 +74,7 @@
 
   <!-- Card for Sleep -->
   <div class="col-sm-3">
-    <div class="card pmd-list" (click)="selectMood('sleep')">
+    <div class="card pmd-list" (click)="selectMood('Sleep')">
       <div class="list-group-item d-flex flex-row align-items-center">
           <img class="pmd-list-icon pmd-sm" src="../../../assets/sleep.svg" alt="Sleep" width="60">
           <span class="media-body"><h4 style="text-align: center;">Sleep</h4></span>
@@ -89,6 +83,15 @@
   </div>
 
   </div>
-
+</div>
+<div class='container' *ngIf="showResults">
+  <div class="row">
+    <div class='col-12'>
+      <p>Here is your ideal <b>{{ mood }}</b> playlist:</p>
+    </div>
+    <div class='col-12'>
+      <app-track-list [tracks]="generatedPlaylist"></app-track-list>
+    </div>
+  </div>
 </div>
 </body>

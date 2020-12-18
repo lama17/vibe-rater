@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { stringify } from 'querystring';
 import { PlaylistListComponent } from 'src/app/components/playlist-list/playlist-list.component';
 import { PlaylistData } from 'src/app/data/playlist-data';
+import { MoodAlgorithmService } from 'src/app/services/mood-algorithm.service';
 import { SpotifyService } from 'src/app/services/spotify.service';
 
 @Component({
@@ -11,21 +12,28 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 })
 export class CompareComponent implements OnInit {
   playlists:PlaylistData[];
+  playlist1id:string;
+  playlist2id:string;
   playlist1:PlaylistData;
   playlist2:PlaylistData;
-
   playlist1url:string;
   playlist2url:string;
   urls:string[];
+
+  comparePlaylistMoods;
+  sortedComparePlaylistMoods;
+  total;
 
   errorPresent:boolean;
   errorMsg:string;
 
   displayResults:boolean;
 
-  constructor(private spotifyService:SpotifyService) { }
+  constructor(private spotifyService:SpotifyService,  private moodService: MoodAlgorithmService) { }
 
   ngOnInit() {
+    this.playlist1url = 'https://open.spotify.com/playlist/0NCspsyf0OS4BsPgGhkQXM?si=Gl-7pzdxT0OQ6ok5dtwjuQ';
+    this.playlist2url = 'https://open.spotify.com/playlist/3FqVzPW4y0v6WhR63ps9RH?si=VfTV17Z9Qt2I8F96OOuJmA';
     this.urls = [this.playlist1url, this.playlist2url];
     this.playlists = [this.playlist1, this.playlist2];
     this.displayResults = false;
@@ -33,18 +41,17 @@ export class CompareComponent implements OnInit {
     this.errorMsg = "An error occurred, please try again. ";
   }
 
-  comparePlaylists(){
-    console.log('compare playlists called');
-    // check URLs are valid, parse playlist ID from url, get playlists and set playlist1 and playlist2 to playlist items.
-    this.getPlaylists();
-
-    // to do: inject mood algo and compare playlists.
-
-  }
-
-  getPlaylists(){
+  async getPlaylists(){
     this.errorPresent = false;
+    this.displayResults = false;
     this.urls = [this.playlist1url, this.playlist2url];
+
+    // check if urls are the same
+    if(this.playlist1url == this.playlist2url){
+      this.errorPresent = true;
+      this.errorMsg = "URLs cannot be identical, please try again."
+      return;
+    }
 
     // check if each URL is valid, then grab the playlist:
     this.urls.forEach(url => {
@@ -57,16 +64,32 @@ export class CompareComponent implements OnInit {
       // parse ID
       let id = this.parseID(url, index);
 
-      // get playlists from ID
-      this.spotifyService.getPlaylist(id).then(data => {
-        if(index == 0){
-          this.playlist1 = data;
-        }else if(index ==1){
-          this.playlist2 = data;
-        }
-      });
+      // set playlistID to parsed ID
+      if(index == 0){
+        this.playlist1id = id;
+      }else if(index == 1){
+        this.playlist2id = id;
+      }
     });
+    this.comparePlaylists();
+  }
+
+  async comparePlaylists(){
+    // compare playlist tracks
+    this.comparePlaylistMoods = await this.moodService.comparePlaylists(this.playlist1id, this.playlist2id);
+    console.log(this.comparePlaylistMoods);
+
+    // sorts moods to display them in order from highest -> lowest
+    this.sortedComparePlaylistMoods = Object.entries(this.comparePlaylistMoods).sort((a:any,b:any) => b[1]-a[1]);
+
+    // gets total of songs in  playlist (without calling spotify api), to calculate percentages
+    const gettotal = obj => Object.values(obj).reduce((a:number, b:number) => a + b);
+    this.total = gettotal(this.comparePlaylistMoods);
     this.showResults();
+
+    // finally, get playlist names to show results
+    this.playlist1 = await this.spotifyService.getPlaylist(this.playlist1id);
+    this.playlist2 = await this.spotifyService.getPlaylist(this.playlist2id);
   }
 
   showResults():void{
@@ -74,7 +97,7 @@ export class CompareComponent implements OnInit {
     return;
   }
 
-  isValidURL(url:string, n:number):boolean{
+  private isValidURL(url:string, n:number):boolean{
     // checks if the inputted URL is valid. returns true if url is valid and playlist ID is extractable.
 
     // CHECKS IF URL IS EMPTY
@@ -94,7 +117,7 @@ export class CompareComponent implements OnInit {
       }  
     }
 
-  parseID(url:string, index:number):string{
+  private parseID(url:string, index:number):string{
     // PARSING PLAYLIST ID
     let split = url.split('playlist/')[1];
     // regex pattern to grab only the ID (not any ? or = or other params that may appear after id)

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PlaylistData } from 'src/app/data/playlist-data';
 import { TrackData } from 'src/app/data/track-data';
+import { MoodAlgorithmService } from 'src/app/services/mood-algorithm.service';
 import { SpotifyService } from 'src/app/services/spotify.service';
 
 @Component({
@@ -10,11 +11,11 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 })
 export class BuildPlaylistComponent implements OnInit {
   library:TrackData[];
-  generatedPlaylist:PlaylistData;
+  generatedPlaylist:TrackData[];
   mood:string;
   showResults:boolean;
 
-  constructor(private spotifyService:SpotifyService) { }
+  constructor(private spotifyService:SpotifyService, private moodService:MoodAlgorithmService) { }
 
   ngOnInit() {
     this.showResults=false;
@@ -28,11 +29,11 @@ export class BuildPlaylistComponent implements OnInit {
   
   //this doesn't work
   generatePlaylist(){
-    for(var i=0; i<20; i++){
-      this.generatedPlaylist.tracks.push(new TrackData(this.library[i]));
-      console.log(this.library[i]);
-    }
-    this.showResults=true;
+    this.moodService.buildPlaylist(this.mood).then(data=>{
+      this.generatedPlaylist = data;
+    });
+    this.showResults = true;
+    return;
   }
 
   selectMood(value:string){

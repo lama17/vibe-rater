@@ -9,27 +9,42 @@
   </div>
   <div class="row">
     <div class="col md-6 sm-12">
+      <h4>Playlist 1</h4>
       <div class="input-group mb-3">
         <input type="text" [(ngModel)]="playlist1url" class="form-control" placeholder="https://open.spotify.com/playlist/37i9dQZF1DX5gQonLbZD9s?si=bbDnZq2XQTWedoERVZ-_LQ" aria-label="Playlist 1" aria-describedby="basic-addon1">
       </div>      
     </div>
     <div class="col md-6 sm-12">
+      <h4>Playlist 2</h4>
       <div class="input-group mb-3">
         <input type="text" [(ngModel)]="playlist2url" class="form-control" placeholder="https://open.spotify.com/playlist/37i9dQZF1DWUSyphfcc6aL?si=Ai6XOZKmRHi0i8sboOIvbQ" aria-label="Playlist 1" aria-describedby="basic-addon1">
       </div>      
     </div>
   </div>
-  <div class="row">
-    <button (click)="comparePlaylists()" class="btn">Compare playlists</button>
+  <div class="row d-flex flex-row align-items-center">
+    <button (click)="getPlaylists()" class="btn">Compare playlists</button>
   </div>
   <p *ngIf="errorPresent" style="color:red;">{{ errorMsg }}</p>
 </div>
 
-<div class="container" *ngIf="displayResults">
+<div class="container" style="margin-top:20px;" *ngIf="displayResults && !errorPresent">
   <div class="row">
     <div class="col-12">
-      <h2>Results</h2> 
+      <h2>Comparison results for {{ playlist1.name }} and {{ playlist2.name }}</h2> 
+      <p>We think these two playlists have the following moods in common:</p>
     </div>
   </div>
+  <!-- cards -->
+  <div class="row">
+    <div class="col-12">
+        <div class="card pmd-list" *ngFor="let mood of sortedComparePlaylistMoods | slice:0:3">
+            <div class="list-group-item d-flex flex-row align-items-center">
+                <img class="pmd-list-icon pmd-sm" src="../../../assets/{{ mood[0] }}.svg" alt="{{ mood[0] }}" width="60">
+                <span class="media-body"><h3 style="text-align: center;">{{ mood[0] }}</h3>
+                <h5 style="text-align: center;">{{ (mood[1] / total * 100.0) | number:0 }}%</h5></span>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 </body>
