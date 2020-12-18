@@ -73,20 +73,32 @@ export class MoodAlgorithmService {
     for (let i = 0; i < data.length; i++) {
 
 
-      if (data[i].danceability <= .5 || data[i].energy <= .4 || data[i].valence <= .3 || data[i].acousticness >= .5) {
+
+      if (data[i].energy <= .49) 
+      {
+        if (data[i].valence <= .2 || data[i].acousticness >= .7 || data[i].energy <= .3 || data[i].loudness <= -15 || data[i].instrumentalness >= 40) {
+          mood = "Calm";
+        }
+        else
+        {
         mood = "Sad";
-      }
-      else if (data[i].danceability <= .4 || data[i].energy <= .2 || data[i].valence <= .2 || data[i].acousticness >= .7) {
-        mood = "Calm";
-      }
-      else if (data[i].danceability > .5 || data[i].energy > .85 || data[i].valence > .4 || data[i].acousticness <= .1) {
-        mood = "Energetic";
-      }
-      else if (data[i].danceability >= .6 || data[i].energy >= .7 || data[i].valence >= .5 || data[i].acousticness <= .2) {
-        mood = "Happy";
+        }
+      
       }
       else {
-        mood = "Unable to Classify";
+        if (data[i].valence > .49) {
+          if (data[i].acousticness > .9) {
+            mood = "Happy"
+          }
+          mood = "Energetic"
+        }
+        if (data[i].energy > .8) {
+          if (data[i].acousticness <= .9) {
+            mood = "Energetic"
+          }
+          mood = "Happy"
+        }
+        //mood = "Happy"
       }
 
       var trck =
@@ -100,17 +112,22 @@ export class MoodAlgorithmService {
 
     let final = [];
 
-    for (let i = 0; i < f.length; i++)
-    {
-      if (f[i].mood == vibe)
-      {
-        var t = await this.spotifyService.getTrack(f[i].id);
-        final.push(t);
+    let newArray = [];
+
+    for (let i = 0; i < f.length; i++) {
+      newArray.push(f[i].id);
+    }
+
+    let trackingTracks = await this.spotifyService.getSeveralTracks(newArray);
+
+    for (let i = 0; i < f.length; i++) {
+      if (f[i].mood == vibe) {
+        final.push(trackingTracks[i]);
       }
     }
 
     console.log("Build Playlist called:");
-    //console.log(f);
+    console.log(f);
     console.log(final);
 
     return final;
@@ -156,22 +173,33 @@ export class MoodAlgorithmService {
     var f = [];
     let mood = "";
     for (var i = 0; i < data.length; i++) {
-
-
-      if (data[i].danceability <= .5 || data[i].energy <= .4 || data[i].valence <= .3 || data[i].acousticness >= .5) {
+      
+      
+      if (data[i].energy <= .49) 
+      {
+        if (data[i].valence <= .3 || data[i].acousticness >= .7 || data[i].energy <= .3 || data[i].loudness <= -15 || data[i].instrumentalness >= 40) {
+          mood = "Calm";
+        }
+        else
+        {
         mood = "Sad";
+        }
       }
-      else if (data[i].danceability <= .4 || data[i].energy <= .2 || data[i].valence <= .2 || data[i].acousticness >= .7) {
-        mood = "Calm";
-      }
-      else if (data[i].danceability > .5 || data[i].energy > .85 || data[i].valence > .4 || data[i].acousticness <= .1) {
-        mood = "Energetic";
-      }
-      else if (data[i].danceability >= .6 || data[i].energy >= .7 || data[i].valence >= .5 || data[i].acousticness <= .2) {
-        mood = "Happy";
-      }
+
       else {
-        mood = "Unable to Classify";
+        if (data[i].valence > .49) {
+          if (data[i].acousticness > .9) {
+            mood = "Happy"
+          }
+          mood = "Energetic"
+        }
+        if (data[i].energy > .8) {
+          if (data[i].acousticness <= .9) {
+            mood = "Energetic"
+          }
+          mood = "Happy"
+        }
+        //mood = "Happy"
       }
 
       var trck =
