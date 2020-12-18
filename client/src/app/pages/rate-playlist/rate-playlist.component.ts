@@ -57,7 +57,7 @@ export class RatePlaylistComponent implements OnInit {
 
     // sorts moods to display them in order from highest -> lowest
     this.sortedSelectedPlaylistMoods = Object.entries(this.selectedPlaylistMoods).sort((a:any,b:any) => b[1]-a[1]);
-    console.log(this.sortedSelectedPlaylistMoods);
+    // creates trackfeature objects to be used for the thermometer
     this.sortedSelectedPlaylistMoods.forEach (item => {
       this.playlistMoods.push(new TrackFeature(item[0], (item[1] / this.total)));
     });

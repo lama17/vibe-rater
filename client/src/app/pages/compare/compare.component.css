@@ -1,0 +1,17 @@
+.row  {
+    justify-content: center;
+}
+.header {
+    padding-bottom: 30px;
+}
+@media screen and (max-width: 768px) { 
+    .inputs {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .container {
+        width: 100%;
+        height: 100%;
+    }
+}
