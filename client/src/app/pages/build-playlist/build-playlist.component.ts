@@ -21,8 +21,6 @@ export class BuildPlaylistComponent implements OnInit {
     this.showResults=false;
     this.spotifyService.getMyLibrary().then(data => {
       this.library = data;
-      console.log('first 50 saved songs');
-      console.log(this.library);
     });
 
   }

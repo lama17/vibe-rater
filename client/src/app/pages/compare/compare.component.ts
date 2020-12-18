@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { stringify } from 'querystring';
 import { PlaylistListComponent } from 'src/app/components/playlist-list/playlist-list.component';
 import { PlaylistData } from 'src/app/data/playlist-data';
+import { TrackFeature } from 'src/app/data/track-feature';
 import { MoodAlgorithmService } from 'src/app/services/mood-algorithm.service';
 import { SpotifyService } from 'src/app/services/spotify.service';
 
@@ -11,23 +12,24 @@ import { SpotifyService } from 'src/app/services/spotify.service';
   styleUrls: ['./compare.component.css']
 })
 export class CompareComponent implements OnInit {
-  playlists:PlaylistData[];
+  playlists:PlaylistData[]=[];
   playlist1id:string;
   playlist2id:string;
   playlist1:PlaylistData;
   playlist2:PlaylistData;
   playlist1url:string;
   playlist2url:string;
-  urls:string[];
+  urls:string[]=[];
 
-  comparePlaylistMoods;
-  sortedComparePlaylistMoods;
+  comparePlaylistMoods=[];
+  sortedComparePlaylistMoods=[];
+  playlistMoods: TrackFeature[] = [];
   total;
 
-  errorPresent:boolean;
+  errorPresent:boolean=false;
   errorMsg:string;
 
-  displayResults:boolean;
+  displayResults:boolean=false;
 
   constructor(private spotifyService:SpotifyService,  private moodService: MoodAlgorithmService) { }
 
@@ -75,17 +77,27 @@ export class CompareComponent implements OnInit {
   }
 
   async comparePlaylists(){
+
+    // empties and clear data from previous playlists
+    this.total=0;
+    this.playlistMoods=[];
+
     // compare playlist tracks
     this.comparePlaylistMoods = await this.moodService.comparePlaylists(this.playlist1id, this.playlist2id);
     console.log(this.comparePlaylistMoods);
-
-    // sorts moods to display them in order from highest -> lowest
-    this.sortedComparePlaylistMoods = Object.entries(this.comparePlaylistMoods).sort((a:any,b:any) => b[1]-a[1]);
 
     // gets total of songs in  playlist (without calling spotify api), to calculate percentages
     const gettotal = obj => Object.values(obj).reduce((a:number, b:number) => a + b);
     this.total = gettotal(this.comparePlaylistMoods);
     this.showResults();
+
+    // sorts moods to display them in order from highest -> lowest
+    this.sortedComparePlaylistMoods = Object.entries(this.comparePlaylistMoods).sort((a:any,b:any) => b[1]-a[1]);
+    // creates trackfeature objects to be used for the thermometer
+    this.sortedComparePlaylistMoods.forEach (item => {
+      this.playlistMoods.push(new TrackFeature(item[0], (item[1] / this.total)));
+    });
+
 
     // finally, get playlist names to show results
     this.playlist1 = await this.spotifyService.getPlaylist(this.playlist1id);

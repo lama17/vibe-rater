@@ -50,8 +50,13 @@
     .hero-text {
         display: flex;
         flex-direction: column;
-        padding-right: 10px;
+        padding-right: 20px;
         width: inherit;
+    }
+    .hero-text p {
+        padding-top: 10px;
+        margin-right: 80px;
+        line-height: 1.2;
     }
     .card{
         width: 18rem;

@@ -5,7 +5,6 @@
   <div class="col-12">
     <h1>Build a playlist</h1>
     <p>Select a mood below, and we'll return a playlist of songs from your Spotify library that perfectly match.</p>
-      <!-- Andrea: was thinking of keeping the mood cards at the top and displaying the generated playlist under. The user can then toggle between moods & playlists??? ovya: gotcha -->
   </div>
 </div>
 <div class="row">
@@ -14,7 +13,7 @@
   <div class="col-sm-3">
     <div class="card pmd-list" (click)="selectMood('Happy')">
       <div class="list-group-item d-flex flex-row align-items-center">
-          <img class="pmd-list-icon pmd-sm" src="../../../assets/happy.svg" alt="Happy" width="60">
+          <img class="pmd-list-icon pmd-sm" src="../../../assets/happy.svg" alt="Happy">
           <span class="media-body"><h4 style="text-align: center;">Happy</h4></span>
       </div>
     </div>
@@ -24,7 +23,7 @@
   <div class="col-sm-3">
     <div class="card pmd-list" (click)="selectMood('Sad')">
       <div class="list-group-item d-flex flex-row align-items-center">
-          <img class="pmd-list-icon pmd-sm" src="../../../assets/sad.svg" alt="Sad" width="60">
+          <img class="pmd-list-icon pmd-sm" src="../../../assets/sad.svg" alt="Sad">
           <span class="media-body"><h4 style="text-align: center;">Sad</h4></span>
       </div>
     </div>
@@ -34,64 +33,69 @@
   <div class="col-sm-3">
     <div class="card pmd-list" (click)="selectMood('Energetic')">
       <div class="list-group-item d-flex flex-row align-items-center">
-          <img class="pmd-list-icon pmd-sm" src="../../../assets/energetic.svg" alt="Energetic" width="60">
+          <img class="pmd-list-icon pmd-sm" src="../../../assets/energetic.svg" alt="Energetic">
           <span class="media-body"><h4 style="text-align: center;">Energetic</h4></span>
       </div>
     </div>
   </div>
 
-  <!-- Card for Focus -->
-  <div class="col-sm-3">
-    <div class="card pmd-list" (click)="selectMood('Focus')">
-      <div class="list-group-item d-flex flex-row align-items-center">
-          <img class="pmd-list-icon pmd-sm" src="../../../assets/focus.svg" alt="Focus" width="60">
-          <span class="media-body"><h4 style="text-align: center;">Focus</h4></span>
-      </div>
-    </div>
-  </div>
-
-  </div>
-  <div class="row">
   <!-- Card for Chill -->
   <div class="col-sm-3">
-    <div class="card pmd-list" (click)="selectMood('Calm')">
+    <div class="card pmd-list" (click)="selectMood('Calm')" word-wrap>
       <div class="list-group-item d-flex flex-row align-items-center">
-          <img class="pmd-list-icon pmd-sm" src="../../../assets/calm.svg" alt="Calm" width="60">
+          <img class="pmd-list-icon pmd-sm" src="../../../assets/calm.svg" alt="Calm">
           <span class="media-body"><h4 style="text-align: center;">Chill</h4></span>
       </div>
     </div>
   </div>
+  
 
-  <!-- Card for Love -->
+  </div>
+  <!--
+  <div class="row">
+
+  <!- - Card for Focus - ->
+  <div class="col-sm-3">
+    <div class="card pmd-list" (click)="selectMood('Focus')">
+      <div class="list-group-item d-flex flex-row align-items-center">
+          <img class="pmd-list-icon pmd-sm" src="../../../assets/focus.svg" alt="Focus">
+          <span class="media-body"><h4 style="text-align: center;">Focus</h4></span>
+      </div>
+    </div>
+  </div>
+  
+
+  <!- - Card for Love - ->
   <div class="col-sm-3">
     <div class="card pmd-list" (click)="selectMood('Love')">
       <div class="list-group-item d-flex flex-row align-items-center">
-          <img class="pmd-list-icon pmd-sm" src="../../../assets/love.svg" alt="Love" width="60">
+          <img class="pmd-list-icon pmd-sm" src="../../../assets/love.svg" alt="Love">
           <span class="media-body"><h4 style="text-align: center;">Love</h4></span>
       </div>
     </div>
   </div>
 
-  <!-- Card for Sleep -->
+  <!- - Card for Sleep - ->
   <div class="col-sm-3">
     <div class="card pmd-list" (click)="selectMood('Sleep')">
       <div class="list-group-item d-flex flex-row align-items-center">
-          <img class="pmd-list-icon pmd-sm" src="../../../assets/sleep.svg" alt="Sleep" width="60">
+          <img class="pmd-list-icon pmd-sm" src="../../../assets/sleep.svg" alt="Sleep">
           <span class="media-body"><h4 style="text-align: center;">Sleep</h4></span>
       </div>
     </div>
   </div>
 
-  </div>
+  </div>-->
+  
 </div>
+
 <div class='container' *ngIf="showResults">
   <div class="row">
-    <div class='col-12'>
+    <div class='gen-playlist'>
       <p>Here is your ideal <b>{{ mood }}</b> playlist:</p>
-    </div>
-    <div class='col-12'>
       <app-track-list [tracks]="generatedPlaylist"></app-track-list>
     </div>
   </div>
 </div>
+
 </body>

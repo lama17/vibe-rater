@@ -2,19 +2,19 @@
 <body>
 <div class="container">
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 header">
       <h1>Compare playlists</h1>
       <p>Curious if you and your boo have similar music tastes? Input URLs to two Spotify playlists, and let our vibe-rating algorithm compare the two!</p>
     </div>
   </div>
-  <div class="row">
-    <div class="col md-6 sm-12">
+  <div class="inputs">
+    <div class="col-12">
       <h4>Playlist 1</h4>
       <div class="input-group mb-3">
         <input type="text" [(ngModel)]="playlist1url" class="form-control" placeholder="https://open.spotify.com/playlist/37i9dQZF1DX5gQonLbZD9s?si=bbDnZq2XQTWedoERVZ-_LQ" aria-label="Playlist 1" aria-describedby="basic-addon1">
       </div>      
     </div>
-    <div class="col md-6 sm-12">
+    <div class="col-12">
       <h4>Playlist 2</h4>
       <div class="input-group mb-3">
         <input type="text" [(ngModel)]="playlist2url" class="form-control" placeholder="https://open.spotify.com/playlist/37i9dQZF1DWUSyphfcc6aL?si=Ai6XOZKmRHi0i8sboOIvbQ" aria-label="Playlist 1" aria-describedby="basic-addon1">
@@ -34,7 +34,14 @@
       <p>We think these two playlists have the following moods in common:</p>
     </div>
   </div>
-  <!-- cards -->
+
+  <!-- thermometer results -->
+  <div class="mood-therm" style="padding-top:40px;">
+    <app-thermometer *ngFor="let mood of playlistMoods" [feature]="mood"></app-thermometer>
+  </div>
+
+  
+  <!-- cards 
   <div class="row">
     <div class="col-12">
         <div class="card pmd-list" *ngFor="let mood of sortedComparePlaylistMoods | slice:0:3">
@@ -45,6 +52,8 @@
             </div>
         </div>
     </div>
+</div>-->
 </div>
-</div>
+
+
 </body>
